@@ -1,0 +1,31 @@
+[package]
+name = "youtube-mini"
+version = "0.1.0"
+description = "Reproductor de YouTube ligero para Windows"
+edition = "2021"
+rust-version = "1.77"
+
+[lib]
+name = "youtube_mini_lib"
+crate-type = ["staticlib", "cdylib", "rlib"]
+
+[build-dependencies]
+tauri-build = { version = "2", features = [] }
+
+[dependencies]
+# `unstable` = multiwebview (ventana con webview local de UI + webview remoto de YouTube).
+tauri = { version = "2", features = ["tray-icon", "unstable"] }
+tauri-plugin-global-shortcut = "2"
+tauri-plugin-single-instance = "2"
+tauri-plugin-autostart = "2"
+tauri-plugin-opener = "2"
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+url = "2"
+
+[profile.release]
+opt-level = "s"
+lto = true
+codegen-units = 1
+panic = "abort"
+strip = true

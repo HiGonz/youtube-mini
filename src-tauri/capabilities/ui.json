@@ -1,0 +1,14 @@
+{
+  "$schema": "../gen/schemas/desktop-schema.json",
+  "identifier": "ui",
+  "description": "UI local (barra superior, ajustes, quick launch). Nunca aplica a contenido remoto.",
+  "local": true,
+  "webviews": ["ui", "quick", "settings"],
+  "permissions": [
+    "core:event:allow-listen", "core:event:allow-unlisten",
+    "allow-get-settings", "allow-set-settings", "allow-get-state", "allow-get-recent",
+    "allow-navigate", "allow-toggle-mini", "allow-set-mini-size", "allow-toggle-pip",
+    "allow-toggle-always-on-top", "allow-window-ctl", "allow-open-settings",
+    "allow-quick-submit", "allow-hide-quick", "allow-player-cmd"
+  ]
+}

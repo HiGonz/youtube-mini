@@ -1,0 +1,32 @@
+/* Sistema de diseño: tokens. Dark-first, sin animaciones permanentes. */
+:root {
+  --bg: #0b0b0d; --surface: #141417; --surface-2: #1c1c21; --border: #ffffff14; --border-strong: #ffffff26;
+  --text: #f4f4f5; --muted: #a1a1aa; --accent: #ff3b30; --accent-fg: #fff;
+  --r-sm: 8px; --r-md: 10px; --r-lg: 14px; --gap: 8px;
+  --font: "Segoe UI Variable Text", "Segoe UI", system-ui, sans-serif;
+  --shadow: 0 8px 24px #0008; --dur: 140ms; --ease: cubic-bezier(.2, .8, .2, 1);
+  color-scheme: dark;
+}
+:root[data-theme="oled"] { --bg: #000; --surface: #08080a; --surface-2: #121214; }
+:root[data-theme="light"] {
+  --bg: #f6f6f7; --surface: #fff; --surface-2: #ececef; --border: #00000014; --border-strong: #00000026;
+  --text: #18181b; --muted: #6b6b75; --shadow: 0 8px 24px #0002; color-scheme: light;
+}
+:root[data-motion="reduced"] * { transition: none !important; animation: none !important; }
+
+* { box-sizing: border-box; margin: 0; }
+html, body, #app { height: 100%; }
+body { background: var(--bg); color: var(--text); font: 13px/1.4 var(--font); overflow: hidden; user-select: none; -webkit-user-select: none; }
+input { font: inherit; color: inherit; user-select: text; -webkit-user-select: text; }
+button { font: inherit; color: inherit; background: none; border: 0; cursor: pointer; }
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 1px; }
+
+.icon-btn { display: grid; place-items: center; width: 32px; height: 32px; border-radius: var(--r-sm); color: var(--muted); transition: background var(--dur) var(--ease), color var(--dur) var(--ease); }
+.icon-btn:hover:not(:disabled) { background: var(--surface-2); color: var(--text); }
+.icon-btn:active:not(:disabled) { background: var(--border-strong); }
+.icon-btn[aria-pressed="true"] { color: var(--accent); background: color-mix(in srgb, var(--accent) 14%, transparent); }
+.icon-btn.danger:hover { background: #e5484d; color: #fff; }
+.icon-btn:disabled { opacity: .35; cursor: default; }
+.btn { padding: 6px 12px; border-radius: var(--r-sm); background: var(--surface-2); border: 1px solid var(--border); }
+.btn:hover { border-color: var(--border-strong); }
+.btn.primary { background: var(--accent); color: var(--accent-fg); border-color: transparent; }
